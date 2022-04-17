@@ -7,5 +7,5 @@ spring:
       server:
         git:
           uri: https://github.com/Clesyo/config-server
-          search-paths: command-client
+          search-paths: command-client, command-user
           
