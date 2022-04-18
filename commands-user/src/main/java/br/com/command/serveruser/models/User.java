@@ -11,7 +11,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users", indexes = { @Index(name = "user_idx_public_id", columnList = "public_id") })
+@Table(name = "users", indexes = { @Index(name = "user_idx_public_id", columnList = "public_id"), 
+		 @Index(name = "user_idx_restaurant_public_id", columnList = "restaurant_public_id")})
 public class User extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
@@ -22,6 +23,9 @@ public class User extends BaseEntity {
 	private String email;
 
 	private String password;
+	
+	@Column(name = "restaurant_public_id")
+	private String restaurant;
 
 	@ManyToMany
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))

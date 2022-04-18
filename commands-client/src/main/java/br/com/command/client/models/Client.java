@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "clients", indexes = { @Index(name = "user_idx_public_id", columnList = "user_public_id") })
+@Table(name = "clients", indexes = { @Index(name = "client_idx_user_public_id", columnList = "user_public_id") })
 public class Client extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
