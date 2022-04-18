@@ -23,6 +23,8 @@ public class RestaurantForm {
 	private Integer number;
 
 	private String distric;
+	
+	private Integer ibgeCode;
 
 	public Restaurant toRestaurant(Restaurant... restaurants) {
 		var restaurant = new Restaurant();
@@ -115,4 +117,11 @@ public class RestaurantForm {
 		this.distric = distric;
 	}
 
+	public Integer getIbgeCode() {
+		return ibgeCode;
+	}
+
+	public void setIbgeCode(Integer ibgeCode) {
+		this.ibgeCode = ibgeCode;
+	}
 }
