@@ -1,11 +1,14 @@
 package br.com.command.client.models;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -41,6 +44,9 @@ public class Restaurant extends BaseEntity {
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "state_id")
 	private State state;
+	
+	@OneToMany(mappedBy = "restaurant")
+	private List<Product> products;
 
 	public String getName() {
 		return name;

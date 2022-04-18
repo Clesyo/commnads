@@ -25,6 +25,10 @@ public class Product extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
+	
+	@ManyToOne
+	@JoinColumn(name = "restaurant_id")
+	private Restaurant restaurant;
 
 	public String getName() {
 		return name;
@@ -64,5 +68,13 @@ public class Product extends BaseEntity {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
 	}
 }
