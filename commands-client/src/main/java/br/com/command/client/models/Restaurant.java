@@ -10,14 +10,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "restaurants", indexes = {@Index(name = "restaurant_idx_cnpj",columnList = "cnpf")})
+@Table(name = "restaurants", indexes = {@Index(name = "restaurant_idx_cnpj",columnList = "cnpj")})
 public class Restaurant extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
 	private String name;
 
-	private String cnpf;
+	private String cnpj;
 
 	@Column(unique = true)
 	private String email;
@@ -50,12 +50,12 @@ public class Restaurant extends BaseEntity {
 		this.name = name;
 	}
 
-	public String getCnpf() {
-		return cnpf;
+	public String getCnpj() {
+		return cnpj;
 	}
 
-	public void setCnpf(String cnpf) {
-		this.cnpf = cnpf;
+	public void setCnpj(String cnpf) {
+		this.cnpj = cnpf;
 	}
 
 	public String getEmail() {
