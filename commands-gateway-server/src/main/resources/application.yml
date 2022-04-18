@@ -1,0 +1,23 @@
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+server:
+  port: 8765
+spring:
+  application:
+    name: command-gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: command-user
+        uri: lb://command-user
+        predicates:
+        - Path=/user/**
+      - id: command-client
+        uri: lb://command-client
+        predicates:
+        - Path=/client/**

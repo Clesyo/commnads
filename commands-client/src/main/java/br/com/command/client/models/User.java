@@ -1,12 +1,15 @@
 package br.com.command.client.models;
 
+import java.util.List;
+
 public class User extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
-
 	private String name;
 	private String email;
 	private String password;
+	
+	private List<String> roles;
 
 	public String getName() {
 		return name;
@@ -32,4 +35,11 @@ public class User extends BaseEntity {
 		this.password = password;
 	}
 
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
 }

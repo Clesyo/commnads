@@ -1,4 +1,4 @@
-content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="br.com.command.configuser.models.BaseEntity"><rhs name\="br.com.command.configuser.models.User"/></lhs><lhs name\="br.com.command.configuser.models.User"><rhs name\="br.com.command.configuser.models.User"/></lhs></history>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="br.com.command.configuser.models.BaseEntity"><rhs name\="br.com.command.configuser.models.User"/></lhs><lhs name\="br.com.command.configuser.models.User"><rhs name\="br.com.command.configuser.models.User"/></lhs><lhs name\="br.com.command.serveruser.dto.UserDto"><rhs name\="br.com.command.serveruser.dto.UserDto"/></lhs><lhs name\="br.com.command.client.forms.UserForm"><rhs name\="br.com.command.client.forms.UserForm"/></lhs><lhs name\="br.com.command.client.dtos.ClientDto"><rhs name\="br.com.command.client.dtos.ClientDto"/></lhs></history>
 content_assist_number_of_computers=14
 content_assist_proposals_background=255,255,255
 content_assist_proposals_foreground=0,0,0
