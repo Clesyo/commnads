@@ -18,6 +18,7 @@ import com.google.gson.JsonParser;
 
 import br.com.command.client.models.City;
 import br.com.command.client.models.State;
+import br.com.command.client.repository.CityRepository;
 import br.com.command.client.repository.StateRepository;
 
 @Service
