@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.command.serveruser.dto.UserDto;
 import br.com.command.serveruser.form.UserForm;
-import br.com.command.serveruser.services.UserService;
+import br.com.command.serveruser.intefaces.IUserService;
 
 @RestController
 @RequestMapping(path = "/user")
 public class UserController {
 
 	@Autowired
-	private UserService userService;
+	private IUserService userService;
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
