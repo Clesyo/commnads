@@ -14,8 +14,6 @@ public class Client extends BaseEntity {
 	private String phone;
 	private Date dateBirth;
 	
-	@OneToOne
-	@JoinColumn(name = "user_id")
 	private User user;
 
 	public String getName() {
