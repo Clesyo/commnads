@@ -13,6 +13,15 @@ public class ClientDto {
 
 	private UserDto user;
 
+	public ClientDto(Client client) {
+		super();
+		this.name = client.getName();
+		this.cpf = client.getCpf();
+		this.email = client.getEmail();
+		this.phone = client.getPhone();
+		this.dateBirth = Utils.parse(client.getDateBirth());
+	}
+	
 	public ClientDto(Client client, UserDto user) {
 		super();
 		this.name = client.getName();
@@ -21,6 +30,10 @@ public class ClientDto {
 		this.phone = client.getPhone();
 		this.dateBirth = Utils.parse(client.getDateBirth());
 		this.user = user;
+	}
+	
+	public static ClientDto convertTo(Client client) {
+		return new ClientDto(client);
 	}
 	
 	public static ClientDto convertTo(Client client, UserDto user) {

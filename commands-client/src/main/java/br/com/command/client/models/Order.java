@@ -1,13 +1,16 @@
 package br.com.command.client.models;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.command.client.enums.OrderStatus;
@@ -30,6 +33,9 @@ public class Order extends BaseEntity {
 	private OrderStatus status;
 
 	private BigDecimal total;
+	
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	private List<OrderItem> items;
 
 	public Restaurant getRestaurant() {
 		return restaurant;
@@ -61,5 +67,13 @@ public class Order extends BaseEntity {
 
 	public void setTotal(BigDecimal total) {
 		this.total = total;
+	}
+
+	public List<OrderItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<OrderItem> items) {
+		this.items = items;
 	}
 }
