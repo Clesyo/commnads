@@ -1,6 +1,5 @@
 package br.com.command.client.forms;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.command.client.enums.OrderStatus;
@@ -11,8 +10,6 @@ public class OrderForm {
 	private Long restaurantId;
 
 	private Long clientId;
-
-	private BigDecimal total;
 
 	private List<OrderItemForm> items;
 
@@ -37,14 +34,6 @@ public class OrderForm {
 
 	public void setClientId(Long clientId) {
 		this.clientId = clientId;
-	}
-
-	public BigDecimal getTotal() {
-		return total;
-	}
-
-	public void setTotal(BigDecimal total) {
-		this.total = total;
 	}
 
 	public List<OrderItemForm> getItems() {

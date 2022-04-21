@@ -26,6 +26,8 @@ public class OrderValidator {
 	@Autowired
 	private ProductRepository productRepository;
 
+	private Double sum = 0.;
+
 	public void validate(OrderForm form, Order order) {
 
 		var restaurant = restaurantRepository.findById(form.getRestaurantId())
@@ -39,18 +41,19 @@ public class OrderValidator {
 	}
 
 	private void validateItems(OrderForm form, Order order) {
-		BigDecimal total= BigDecimal.ZERO;
 		var items = form.getItems().stream().map(itemForm -> {
 			var item = itemForm.toItem();
 			var product = validProduct(itemForm.getProductId());
 			item.setProduct(product);
-			item.setAmount(itemForm.getAmount());
-			total.add(BigDecimal.valueOf(itemForm.getAmount()).multiply(product.getPrice()));
-			
+			item.setQuantity(itemForm.getQuantity());
+			item.setOrder(order);
+			sum += itemForm.getQuantity() * product.getPrice().doubleValue();
 			return item;
 		}).toList();
+		BigDecimal total = new BigDecimal(sum);
 		order.setItems(items);
 		order.setTotal(total);
+		total = BigDecimal.ZERO;
 	}
 
 	private Product validProduct(Long id) {

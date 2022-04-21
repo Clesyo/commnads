@@ -5,11 +5,11 @@ import br.com.command.client.models.OrderItem;
 public class OrderItemForm {
 
 	private Long productId;
-	private Integer amount;
+	private Integer quantity;
 
 	public OrderItem toItem() {
 		var item = new OrderItem();
-
+		item.setQuantity(quantity);
 		return item;
 	}
 
@@ -21,12 +21,12 @@ public class OrderItemForm {
 		this.productId = productId;
 	}
 
-	public Integer getAmount() {
-		return amount;
+	public Integer getQuantity() {
+		return quantity;
 	}
 
-	public void setAmount(Integer amount) {
-		this.amount = amount;
+	public void setQuantity(Integer amount) {
+		this.quantity = amount;
 	}
 
 }

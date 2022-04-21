@@ -13,7 +13,7 @@ public class OrderItemDto {
 	public OrderItemDto(OrderItem item) {
 		this.productId = item.getProduct().getId();
 		this.product = item.getProduct().getName();
-		this.amount = item.getAmount();
+		this.amount = item.getQuantity();
 	}
 	
 	public static OrderItemDto convertTo(OrderItem item) {

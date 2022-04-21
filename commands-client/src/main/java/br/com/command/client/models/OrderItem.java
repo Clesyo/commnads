@@ -1,8 +1,6 @@
 package br.com.command.client.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,11 +20,11 @@ public class OrderItem {
 	@JoinColumn(name = "product_id")
 	private Product product;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private Order order;
 
-	private Integer amount;
+	private Integer quantity;
 
 	public Long getId() {
 		return id;
@@ -52,12 +50,12 @@ public class OrderItem {
 		this.order = order;
 	}
 
-	public Integer getAmount() {
-		return amount;
+	public Integer getQuantity() {
+		return quantity;
 	}
 
-	public void setAmount(Integer amount) {
-		this.amount = amount;
+	public void setQuantity(Integer amount) {
+		this.quantity = amount;
 	}
 
 }
