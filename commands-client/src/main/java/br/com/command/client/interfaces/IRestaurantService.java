@@ -6,4 +6,6 @@ import br.com.command.client.forms.RestaurantForm;
 public interface IRestaurantService {
 
 	RestaurantDto save(RestaurantForm form);
+
+	RestaurantDto update(Long id, RestaurantForm form);
 }

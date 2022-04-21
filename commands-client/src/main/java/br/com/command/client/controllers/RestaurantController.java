@@ -2,7 +2,9 @@ package br.com.command.client.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -24,4 +26,11 @@ public class RestaurantController {
 	public RestaurantDto save(@RequestBody RestaurantForm form) {
 		return restaurantService.save(form);
 	}
+
+	@PutMapping("/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public RestaurantDto save(@PathVariable Long id, @RequestBody RestaurantForm form) {
+		return restaurantService.update(id, form);
+	}
+
 }

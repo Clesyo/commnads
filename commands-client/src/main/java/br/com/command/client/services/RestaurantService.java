@@ -18,21 +18,32 @@ public class RestaurantService implements IRestaurantService {
 
 	@Autowired
 	private RestaurantRepository restaurantRepository;
-	
+
 	@Autowired
 	private RestaurantValidator restaurantValidator;
-	
+
 	@Autowired
 	private CityRepository cityRepository;
 
 	@Override
 	public RestaurantDto save(RestaurantForm form) {
 		var restaurant = form.toRestaurant();
-		restaurantValidator.validate(form);
+		restaurantValidator.validateSave(form);
 		setCityAndState(form.getIbgeCode(), restaurant);
 		restaurantRepository.save(restaurant);
 		return RestaurantDto.convertTo(restaurant);
 	}
+
+	public RestaurantDto update(Long id, RestaurantForm form) {
+		var restaurant = restaurantRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Restaurante não encontrado."));
+		form.toRestaurant(restaurant);
+		restaurantValidator.validateUpdate(id, form);
+		setCityAndState(form.getIbgeCode(), restaurant);
+		restaurantRepository.save(restaurant);
+		return RestaurantDto.convertTo(restaurant);
+	}
+
 	private void setCityAndState(Integer ibgeCode, Restaurant restaurant) {
 		var city = cityRepository.findByIbgeCode(ibgeCode).orElseThrow(
 				() -> new EntityNotFoundException("Não foi encontrado uma cidade com os dados informados."));

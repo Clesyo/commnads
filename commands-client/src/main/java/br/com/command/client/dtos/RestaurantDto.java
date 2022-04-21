@@ -37,7 +37,7 @@ public class RestaurantDto {
 		this.street = restaurant.getStreet();
 		this.complement = restaurant.getComplement();
 		this.number = restaurant.getNumber();
-		this.distric = restaurant.getDistric();
+		this.distric = restaurant.getDistrict();
 		this.city = restaurant.getCity().getName();
 		this.uf = restaurant.getCity().getState().getUf();
 	}

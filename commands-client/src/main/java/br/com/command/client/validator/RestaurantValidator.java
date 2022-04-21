@@ -9,15 +9,21 @@ import br.com.command.client.repository.RestaurantRepository;
 
 @Service
 public class RestaurantValidator {
-	
+
 	@Autowired
 	private RestaurantRepository restaurantRepository;
 
-	public void validate(RestaurantForm form) {
+	public void validateSave(RestaurantForm form) {
 		restaurantRepository.findByCnpj(form.getCnpj()).ifPresent(restaurant -> {
 			throw new InvalidException("Já existem um restaurante cadastro com o CNPJ informado.");
-		});;
+		});
 	}
 
-	
+	public void validateUpdate(Long id, RestaurantForm form) {
+		restaurantRepository.findByCnpjAndIdNot(form.getCnpj(), id).ifPresent(restaurant -> {
+			throw new InvalidException(
+					"Já existem um restaurante com o mesmo CNPJ, por favor verifique os dados informados.");
+		});
+	}
+
 }

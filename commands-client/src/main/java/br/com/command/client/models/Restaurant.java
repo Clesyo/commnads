@@ -35,7 +35,7 @@ public class Restaurant extends BaseEntity {
 
 	private Integer number;
 
-	private String distric;
+	private String district;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "city_id")
@@ -112,12 +112,12 @@ public class Restaurant extends BaseEntity {
 		this.number = number;
 	}
 
-	public String getDistric() {
-		return distric;
+	public String getDistrict() {
+		return district;
 	}
 
-	public void setDistric(String distric) {
-		this.distric = distric;
+	public void setDistrict(String distric) {
+		this.district = distric;
 	}
 
 	public City getCity() {
