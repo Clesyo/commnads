@@ -1,19 +1,18 @@
 package br.com.command.client.models;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import br.com.command.client.enums.PaymentMethod;
 
 @Entity
 @Table(name = "payments")
@@ -23,13 +22,9 @@ public class Payment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "order_id")
 	private Order order;
-
-	@Enumerated(EnumType.STRING)
-	private PaymentMethod paymento;
-
 
 	@Column(columnDefinition = "decimal(19,2) default '0.00'")
 	private BigDecimal troco = BigDecimal.ZERO;
@@ -39,19 +34,24 @@ public class Payment {
 
 	@Column(columnDefinition = "decimal(19,2) default '0.00'")
 	private BigDecimal total = BigDecimal.ZERO;
-	
+
 	@Column(columnDefinition = "decimal(19,2) default '0.00'")
 	private BigDecimal paid = BigDecimal.ZERO;
+
+	@Column(columnDefinition = "decimal(19,2) default '0.00'")
+	private BigDecimal subTotal = BigDecimal.ZERO;
 	
-/*	Formula:
- * Sem disconto
- * TROCO =  paid - total;
- * 
- * Com disconto
- * 
- * TROCO = paid - (total - discount);
- * 
- */
+	@OneToMany(mappedBy = "payment", cascade = CascadeType.ALL)
+	private List<PaymentTitle> titles;
+
+	/*
+	 * Formula: Sem disconto TROCO = paid - total;
+	 * 
+	 * Com disconto
+	 * 
+	 * TROCO = paid - (total - discount);
+	 * 
+	 */
 
 	public Long getId() {
 		return id;
@@ -67,14 +67,6 @@ public class Payment {
 
 	public void setOrder(Order order) {
 		this.order = order;
-	}
-
-	public PaymentMethod getPaymento() {
-		return paymento;
-	}
-
-	public void setPaymento(PaymentMethod paymento) {
-		this.paymento = paymento;
 	}
 
 	public BigDecimal getTroco() {
@@ -108,4 +100,21 @@ public class Payment {
 	public void setPaid(BigDecimal paid) {
 		this.paid = paid;
 	}
+
+	public BigDecimal getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(BigDecimal subTotal) {
+		this.subTotal = subTotal;
+	}
+
+	public List<PaymentTitle> getTitles() {
+		return titles;
+	}
+
+	public void setTitles(List<PaymentTitle> titles) {
+		this.titles = titles;
+	}
+
 }
