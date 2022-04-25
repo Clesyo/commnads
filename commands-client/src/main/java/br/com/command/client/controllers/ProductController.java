@@ -2,7 +2,9 @@ package br.com.command.client.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -23,5 +25,11 @@ public class ProductController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public ProductDto save(@RequestBody ProductForm form) {
 		return productService.save(form);
+	}
+	
+	@PutMapping("/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public ProductDto update(@PathVariable Long id,@RequestBody ProductForm form) {
+		return productService.update(id, form);
 	}
 }

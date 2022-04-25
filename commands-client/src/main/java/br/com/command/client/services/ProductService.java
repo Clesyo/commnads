@@ -1,5 +1,7 @@
 package br.com.command.client.services;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,16 @@ public class ProductService implements IProductService {
 	@Override
 	public ProductDto save(ProductForm form) {
 		var product = form.toProduct();
+		productValidator.validate(form, product);
+		productRepository.save(product);
+		return ProductDto.convertTo(product);
+	}
+
+	@Override
+	public ProductDto update(Long id, ProductForm form) {
+		var product = productRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Produto não encontrado."));
+		form.toProduct(product);
 		productValidator.validate(form, product);
 		productRepository.save(product);
 		return ProductDto.convertTo(product);

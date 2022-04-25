@@ -6,4 +6,6 @@ import br.com.command.client.forms.ProductForm;
 public interface IProductService {
 
 	ProductDto save(ProductForm form);
+
+	ProductDto update(Long id, ProductForm form);
 }

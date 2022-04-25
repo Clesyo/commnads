@@ -33,8 +33,8 @@ public class OrderService implements IOrderService {
 	public void changeOrderStatus(String publicId, OrderStatusForm form) {
 		orderRepository.findByPublicId(publicId).ifPresentOrElse(order -> {
 			order.setStatus(OrderStatus.valueOf(form.getStatus()));
-			 orderRepository.save(order);
+			orderRepository.save(order);
 		}, () -> new EntityNotFoundException("Pedido não encontrado."));
-		
 	}
+
 }
