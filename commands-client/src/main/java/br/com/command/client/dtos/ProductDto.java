@@ -2,10 +2,14 @@ package br.com.command.client.dtos;
 
 import java.math.BigDecimal;
 
+import org.springframework.data.domain.Page;
+
 import br.com.command.client.models.Product;
 
 public class ProductDto {
 
+	private Long id;
+	
 	private String name;
 
 	private String description;
@@ -19,6 +23,7 @@ public class ProductDto {
 	private CategoryDto category;
 
 	public ProductDto(Product product) {
+		this.id = product.getId();
 		this.name = product.getName();
 		this.description = product.getDescription();
 		this.price = product.getPrice();
@@ -29,6 +34,18 @@ public class ProductDto {
 
 	public static ProductDto convertTo(Product product) {
 		return new ProductDto(product);
+	}
+	
+	public static Page<ProductDto> convertTo(Page<Product> products) {
+		return products.map(ProductDto::convertTo);
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {

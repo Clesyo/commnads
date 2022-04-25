@@ -55,7 +55,7 @@ public abstract class BaseEntity implements Serializable {
 	}
 
 	@PrePersist
-	protected void prePersiste() {
+	protected void prePersist() {
 		this.publicId = !StringUtils.hasLength(publicId) ? UUID.randomUUID().toString() : publicId;
 		this.createAt = new Date();
 	}
